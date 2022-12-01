@@ -5,11 +5,12 @@ namespace App\DataFixtures;
 use App\Entity\Campus;
 use App\Entity\Participant;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class ParticipantFixtures extends Fixture
+class ParticipantFixtures extends Fixture implements DependentFixtureInterface
 {
     private UserPasswordHasherInterface $userPasswordHasher;
 
@@ -22,7 +23,7 @@ class ParticipantFixtures extends Fixture
     {
         $campus = $manager->getRepository(Campus::class)->findAll();
 
-        for ($i = 1; $i <= 3; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             $participant = new Participant();
             $participant->setNom("nom$i");
             $participant->setPrenom("prenom$i");
@@ -32,15 +33,17 @@ class ParticipantFixtures extends Fixture
             $participant->setAdministrateur(0);
             $participant->setActif(1);
             $participant->setCampus($campus[mt_rand(0, count($campus) -1)]);
+//            todo: inscription
+//            $participant->addInscriptions();
 
             $manager->persist($participant);
-
         }
 
         $manager->flush();
     }
 
-    public function getDependencies() {
+    public function getDependencies(): array
+    {
         return [CampusFixtures::class];
 
     }

@@ -2,12 +2,12 @@
     <nav class="header_menu">
         <ul class="header_menu_list">
             {#  todo: ajouter affichage condition admin   #}
-            <div>
-                <li><a href="/villes">Villes</a></li>
-                <li><a href="/campus">Campus</a></li>
-            </div>
+            {#            <div> #}
+            {#                <li><a href="/villes">Villes</a></li> #}
+            {#                <li><a href="/campus">Campus</a></li> #}
+            {#            </div> #}
             <li><a href="{{ path('main_home') }}">Accueil</a></li>
-            <li><a href="/profile">Mon profil</a></li>
+            <li><a href="{{ path('participant_profil', { id: app.user.id }) }}">Mon profil</a></li>
             <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
         </ul>
     </nav>

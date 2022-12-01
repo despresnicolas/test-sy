@@ -15,8 +15,9 @@ class MainController extends AbstractController
      */
     public function index(SortieRepository $sortieRepository, CampusRepository $campusRepository): Response
     {
-        $sorties = $sortieRepository->findAll();
+        $sorties = $sortieRepository->findSearch();
         $campus = $campusRepository->findAll();
+
         return $this->render('main/home.html.twig', [
 
             'controller_name' => 'MainController',

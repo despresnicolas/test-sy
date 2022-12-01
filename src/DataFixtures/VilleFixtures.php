@@ -9,10 +9,10 @@ use Doctrine\Persistence\ObjectManager;
 class VilleFixtures extends Fixture
 {
     private $listVilles = [
-        ['nantes', 44000],
-        ['niort', 79000],
-        ['quimper', 29000],
-        ['rennes', 35000]
+        ['nantes', "44000"],
+        ['niort', "79000"],
+        ['quimper', "29000"],
+        ['rennes', "35000"]
     ];
 
     public function load(ObjectManager $manager): void

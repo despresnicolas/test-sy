@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Campus;
 use App\Entity\Etat;
 use App\Entity\Lieu;
 use App\Entity\Participant;

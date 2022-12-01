@@ -32,7 +32,7 @@ class Ville
      * @Assert\Type(type="string")
      * @Assert\Length(max=10)
      * @Assert\NotBlank(message="le code postale de la ville est requis")
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=10)
      */
     private $codePostal;
 

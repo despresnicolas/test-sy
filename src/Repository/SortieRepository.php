@@ -39,6 +39,15 @@ class SortieRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @return Sortie[]
+     */
+    public function findSearch(): array
+    {
+       return $this->findAll();
+
+    }
+
 //    /**
 //     * @return Sortie[] Returns an array of Sortie objects
 //     */

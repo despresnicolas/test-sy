@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <style>
+        .form_particpart_btn {
+            display: flex;
+            gap: 1rem;
+        }
+    </style>
+<div>
+   {{ form_start(participantForm) }}
+    {{ form_widget(participantForm) }}
+    <div class="form_particpart_btn">
+        <button class="btn-class">Enregistrer</button>
+        <button class="btn-class">Annuler</button>
+    </div>
+   {{ form_end(participantForm) }}
+</div>
+{% endblock %}
+
+{% block title %}
+{% endblock %}
+

@@ -12,19 +12,24 @@
     </tr>
     </thead>
     <tbody>
-    {% for sortie in  sorties %}
+    {% for sortie in sorties %}
         <tr>
             <td>{{ sortie.nom }}</td>
             <td>{{ sortie.dateHeureDebut | date('d-M-Y H:m') }} </td>
             <td>{{ sortie.dateLimiteInscription | date('d-M-Y') }}</td>
-{# todo: recuperer le nb d'inscrits  #}
+            {# todo: recuperer le nb d'inscrits  #}
             <td>nbinscrits/{{ sortie.nbInscriptionsMax }}</td>
             <td>{{ sortie.etat.libelle }}</td>
             <td class="td_center">x</td>
-            <td>{{ sortie.organisateur.nom }}</td>
+            <td>
+                <a href="{{ path('participant_profil', {id: sortie.organisateur.id}) }}">
+                    {{ sortie.organisateur.nom }}
+                </a>
+            </td>
             <td class="td_center">
-{#  todo: add actins if user organisateur, inscrits, non-inscrit  #}
-                Actions</td>
+                {#  todo: add actins if user organisateur, inscrits, non-inscrit  #}
+                Actions
+            </td>
 
         </tr>
     {% endfor %}

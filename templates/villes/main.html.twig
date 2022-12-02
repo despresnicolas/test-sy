@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    {% set heading = ['ville', 'code postal', 'actions']%}
+    {% set vars = {value: villes, title: 'villes', heading: heading} %}
+    {% include 'includes/gestionTemplate.html.twig' with vars only %}
+
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+

@@ -1,0 +1,38 @@
+<style>
+    .gestion_search {
+        display: flex;
+    }
+</style>
+<div>
+    <h2 class="page_title">Gérer les {{ title }} </h2>
+    <h3>Filter les {{ title }}</h3>
+    <div class="gestion_search">
+        <label>Le nom contient</label>
+        <input type="text">
+        <button class="btn-class">Rechercher</button>
+    </div>
+    <table class="table_{{ title }}">
+        <thead>
+        <tr>
+            {% for name in heading %}
+                <th>{{ name }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in value %}
+            <tr>
+                <td>{{ item }}</td>
+                {% if item.codePostal  is defined %}
+                    <td>{{ item.codePostal }}</td>
+                {% endif %}
+                <td>action</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+
+

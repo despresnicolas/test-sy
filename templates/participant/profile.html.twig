@@ -1,3 +1,15 @@
 {% extends 'base.html.twig' %}
-{% block title %}test{% endblock %}
-{% block body %}hello{% endblock %}
+{% block title %}{{ parent() }} | profil{% endblock %}
+{% block body %}
+    <style>
+        .main_profil {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+    </style>
+    <div class="main_profil">
+        {% include 'participant/_participant.html.twig' with {participant: participant} only %}
+    </div>
+{% endblock %}

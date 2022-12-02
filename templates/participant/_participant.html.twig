@@ -1,0 +1,33 @@
+<h2 class="page_title">{{ participant.pseudo }}</h2>
+<div class="user_profil">
+    <div class="user_profil_pic">
+        <img src="https://randomuser.me/api/portraits/men/{{ participant.id }}.jpg" alt="photo profil">
+    </div>
+    <div class="user_profil_infos">
+        <ul class="user_profil_infos_list">
+            <li class="user_profil_infos_list_item">
+                <div>Prénom</div>
+                <div>{{ participant.prenom }}</div>
+            </li>
+            <li class="user_profil_infos_list_item">
+                <div>Nom</div>
+                <div>{{ participant.nom }}</div>
+            </li>
+            <li class="user_profil_infos_list_item">
+                <div>Téléphone</div>
+                <div>{{ participant.telephone }}</div>
+            </li>
+            <li class="user_profil_infos_list_item">
+                <div>Email</div>
+                <div>{{ participant.telephone }}</div>
+            </li>
+            <li class="user_profil_infos_list_item">
+                <div>Campus</div>
+                <div>{{ participant.campus.nom }}</div>
+            </li>
+        </ul>
+        <button class="btn-class">Retour</button>
+
+    </div>
+</div>
+

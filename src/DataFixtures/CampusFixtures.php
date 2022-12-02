@@ -8,7 +8,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class CampusFixtures extends Fixture
 {
-    private $campusList = ['nantes', 'niort', 'quimper', 'rennes'];
+    private $campusList = ['nantes', 'niort', 'quimper', 'rennes', 'st herblain'];
 
     public function load(ObjectManager $manager): void
     {
@@ -20,4 +20,5 @@ class CampusFixtures extends Fixture
 
         $manager->flush();
     }
+
 }

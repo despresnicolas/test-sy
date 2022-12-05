@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
+use App\Form\SearchFormType;
 use App\Repository\CampusRepository;
 use App\Repository\SortieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,6 +17,9 @@ class MainController extends AbstractController
      */
     public function index(SortieRepository $sortieRepository, CampusRepository $campusRepository): Response
     {
+        $searchData = new SearchData();
+        $searchForm = $this->createForm(SearchFormType::class, $searchData);
+
         $sorties = $sortieRepository->findSearch();
         $campus = $campusRepository->findAll();
 
@@ -22,7 +27,7 @@ class MainController extends AbstractController
 
             'controller_name' => 'MainController',
             'sorties' => $sorties,
-            'campus' => $campus,
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 }

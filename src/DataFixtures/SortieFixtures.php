@@ -31,6 +31,7 @@ class SortieFixtures extends Fixture implements DependentFixtureInterface
             $sortie->setOrganisateur($participant[mt_rand(0, count($participant) -1)]);
             $sortie->setSiteOrganisateur($sortie->getOrganisateur()->getCampus());
 
+
             $manager->persist($sortie);
         }
 

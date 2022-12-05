@@ -2,50 +2,25 @@
 
 namespace App\Data;
 
+use App\Entity\Campus;
 use App\Entity\Sortie;
 
 class SearchData
 {
-    /**
-     * @var string
-     */
-    private $q = '';
 
-    /**
-     * @var Sortie[]
-     */
-    private $sorties = [];
+    public ?string $search = null;
 
+    public ?Campus $campus = null;
 
-    /**
-     * @return string
-     */
-    public function getQ(): string
-    {
-        return $this->q;
-    }
+    public ?\DateTime $dateDebut = null;
 
-    /**
-     * @param string $q
-     */
-    public function setQ(string $q): void
-    {
-        $this->q = $q;
-    }
+    public ?\DateTime $dateFin = null;
 
-    /**
-     * @return array
-     */
-    public function getSorties(): array
-    {
-        return $this->sorties;
-    }
+    public bool $organisateur = false;
 
-    /**
-     * @param array $sorties
-     */
-    public function setSorties(array $sorties): void
-    {
-        $this->sorties = $sorties;
-    }
+    public bool $inscrit = false;
+
+    public bool $pasInscrit = false;
+
+    public bool $passees = false;
 }

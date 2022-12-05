@@ -8,7 +8,7 @@
                 </div>
             {% endif %}
             <li><a href="{{ path('main_home') }}">Accueil</a></li>
-            <li><a href="{{ path('participant_edit', { id: app.user.id }) }}">Mon profil</a></li>
+            <li><a href="{{ path('participant_profil', { id: app.user.id }) }}">Mon profil</a></li>
             <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
         </ul>
     </nav>

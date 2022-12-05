@@ -2,8 +2,13 @@
 
 
 {% block body %}
-    {% set heading = ['campus', 'actions']%}
-    {% set vars = {value: campus, title: 'campus', heading: heading} %}
+    {% set array = [] %}
+    {% for site in campus %}
+        {% set array = array|merge([{campus:site.nom}]) %}
+    {% endfor %}
+
+    {% set vars = {values: array, title: 'campus'} %}
+
     {% include 'includes/gestionTemplate.html.twig' with vars only %}
 
 {% endblock %}

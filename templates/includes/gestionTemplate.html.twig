@@ -1,3 +1,6 @@
+{% dump(values) %}
+{% set arrKey = [] %}
+{% set arrData = [] %}
 <style>
     .gestion_search {
         display: flex;
@@ -12,27 +15,35 @@
         <button class="btn-class">Rechercher</button>
     </div>
     <table class="table_{{ title }}">
+
         <thead>
         <tr>
-            {% for name in heading %}
-                <th>{{ name }}</th>
+            {% for value in values %}
+                {% for key in value|keys %}
+                    {% if key not in arrKey %}
+                        <th>{{ key }}</th>
+                        {% set arrKey = arrKey|merge([key]) %}
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
+            <th>actions</th>
+
         </tr>
         </thead>
         <tbody>
-        {% for item in value %}
-            <tr>
-                <td>{{ item }}</td>
-                {% if item.codePostal  is defined %}
-                    <td>{{ item.codePostal }}</td>
-                {% endif %}
-                <td>action</td>
-            </tr>
-        {% endfor %}
-
+            {% for value in values %}
+        <tr>
+                {% for key, data in value %}
+                    {% if data not in arrData %}
+                        <td>{{ data }}</td>
+                        {% set arrData = arrData|merge([data]) %}
+                    {% endif %}
+                {% endfor %}
+            <td>action</td>
+            {% endfor %}
+        </tr>
         </tbody>
     </table>
-
 </div>
 
 

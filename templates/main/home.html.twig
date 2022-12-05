@@ -7,8 +7,10 @@
         {% include 'includes/infobanner.html.twig' %}
 
         <h2 class="page_title"> Filtrer les sorties</h2>
-
-        {% include 'main/_filtersorties.html.twig' %}
+        {{ form_start(searchForm) }}
+        {{ form_widget(searchForm) }}
+        <button type="submit" class="btn-class">Rechercher</button>
+        {{ form_end(searchForm) }}
 
         {% include 'main/_tablesorties.html.twig' with {sorties: sorties} only %}
         <a href="/sortie/create">

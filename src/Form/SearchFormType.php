@@ -14,37 +14,69 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SearchFormType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('campus', EntityType::class, [
                 'class' => Campus::class,
-                'choice_label' => 'nom'
+                'label' => 'Campus ',
+                'choice_label' => 'nom',
+                'multiple' => false,
+                'required' => false,
             ])
-            ->add('search', TextType::class, [
+            ->add('textQuery', TextType::class, [
                 'label' => 'Le nom de la sortie contient',
+                'required' => false,
                 'attr' => array(
                     'placeholder' => 'search',
-                    'required' => false
                 )
             ])
             ->add('dateDebut', DateType::class, [
+                'label' => 'Entre ',
                 'widget' => 'single_text',
+                'years' => range(2022, 2050),
+                'required' => false,
             ])
             ->add('dateFin', DateType::class, [
+                'label' => 'et ',
                 'widget' => 'single_text',
+                'years' => range(2022, 2050),
+                'required' => false,
             ])
-            ->add('organisateur', CheckboxType::class)
-            ->add('inscrit', CheckboxType::class)
-            ->add('pasInscrit', CheckboxType::class)
-            ->add('passees', CheckboxType::class);
+            ->add('organisateur', CheckboxType::class, [
+                'label' => 'Sorties dont je suis l\'organisateur/trice',
+                'required' => false,
+            ])
+//            ->add('inscrit', CheckboxType::class, [
+//                'label' => 'Sorties auxquelles je suis inscrit/e',
+//                'required' => false,
+//            ])
+//            ->add('pasInscrit', CheckboxType::class, [
+//                'label' => 'Sorties auxquelles je ne suis pas inscrit/e',
+//                'required' => false,
+//            ])
+            ->add('passees', CheckboxType::class, [
+                'label' => 'Sorties passées',
+                'required' => false,
+            ]);
 
     }
 
+    /**
+     * @param OptionsResolver $resolver
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => SearchData::class,
+            'method' => 'GET',
+            'crsf_protection' => false
         ]);
     }
 }

@@ -8,8 +8,15 @@ use Doctrine\Persistence\ObjectManager;
 
 class CampusFixtures extends Fixture
 {
-    private $campusList = ['nantes', 'niort', 'quimper', 'rennes', 'st herblain'];
+    /**
+     * @var string[]
+     */
+    private array $campusList = ['nantes', 'niort', 'quimper', 'rennes', 'st herblain'];
 
+    /**
+     * @param ObjectManager $manager
+     * @return void
+     */
     public function load(ObjectManager $manager): void
     {
         foreach ($this->campusList as $name) {

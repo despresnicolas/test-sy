@@ -12,13 +12,23 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class ParticipantFixtures extends Fixture implements DependentFixtureInterface
 {
+    /**
+     * @var UserPasswordHasherInterface
+     */
     private UserPasswordHasherInterface $userPasswordHasher;
 
+    /**
+     * @param UserPasswordHasherInterface $userPasswordHasher
+     */
     public function __construct(UserPasswordHasherInterface $userPasswordHasher)
     {
         $this->userPasswordHasher = $userPasswordHasher;
     }
 
+    /**
+     * @param ObjectManager $manager
+     * @return void
+     */
     public function load(ObjectManager $manager): void
     {
         $campus = $manager->getRepository(Campus::class)->findAll();
@@ -32,7 +42,7 @@ class ParticipantFixtures extends Fixture implements DependentFixtureInterface
             $participant->setPassword($this->userPasswordHasher->hashPassword($participant, "azerty$i"));
             $participant->setAdministrateur(0);
             $participant->setActif(1);
-            $participant->setCampus($campus[mt_rand(0, count($campus) -1)]);
+            $participant->setCampus($campus[mt_rand(0, count($campus) - 1)]);
 //            todo: inscription
 //            $participant->addInscriptions();
 
@@ -42,6 +52,9 @@ class ParticipantFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
     }
 
+    /**
+     * @return string[]
+     */
     public function getDependencies(): array
     {
         return [CampusFixtures::class];

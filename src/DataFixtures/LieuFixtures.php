@@ -11,6 +11,10 @@ use Doctrine\Persistence\ObjectManager;
 class LieuFixtures extends Fixture implements DependentFixtureInterface
 {
 
+    /**
+     * @param ObjectManager $manager
+     * @return void
+     */
     public function load(ObjectManager $manager): void
     {
         $ville = $manager->getRepository(Ville::class)->findAll();
@@ -25,6 +29,9 @@ class LieuFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
     }
 
+    /**
+     * @return string[]
+     */
     public function getDependencies(): array
     {
         return [VilleFixtures::class];

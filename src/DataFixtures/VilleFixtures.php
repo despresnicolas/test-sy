@@ -8,13 +8,20 @@ use Doctrine\Persistence\ObjectManager;
 
 class VilleFixtures extends Fixture
 {
-    private $listVilles = [
+    /**
+     * @var \string[][]
+     */
+    private array $listVilles = [
         ['nantes', "44000"],
         ['niort', "79000"],
         ['quimper', "29000"],
         ['rennes', "35000"]
     ];
 
+    /**
+     * @param ObjectManager $manager
+     * @return void
+     */
     public function load(ObjectManager $manager): void
     {
         foreach ($this->listVilles as $arrValue) {

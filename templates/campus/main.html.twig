@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
     {% set array = [] %}
     {% for site in campus %}
@@ -9,7 +8,7 @@
 
     {% set vars = {values: array, title: 'campus'} %}
 
-    {% include 'includes/gestionTemplate.html.twig' with vars only %}
+    {% include 'includes/table.html.twig' with vars only %}
 
 {% endblock %}
 

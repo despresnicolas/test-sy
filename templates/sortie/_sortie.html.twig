@@ -1,0 +1,133 @@
+<style>
+    .main_sortie {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main_sortie_info {
+        display: flex;
+        justify-content: space-around;
+        width: 100vw;
+    }
+
+    .main_sortie_info_item {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .main_sortie_info_item > div {
+        width: 100%;
+    }
+
+    .main_sortie_info_item > span {
+        width: 100%;
+        text-align: end;
+    }
+</style>
+
+
+<div class="main_sortie">
+    <h2 class="page_title">Afficher une sortie</h2>
+    <div class="main_sortie_info">
+        <ul>
+            <li class="main_sortie_info_item">
+                <div>
+                    Nom de la sortie :
+                </div>
+                <span>
+                        {{ sortie.nom }}
+                </span>
+            </li>
+            <li class="main_sortie_info_item">
+                <div>
+                    Date heure de la sortie :
+                </div>
+                <span>
+                    {{ sortie.dateHeureDebut | date('d-M-Y H:m') }}
+                </span>
+            </li>
+            <li class="main_sortie_info_item">
+                <div>
+                    Date limite d'inscription :
+                </div>
+                <span>
+                    {{ sortie.dateLimiteInscription | date('d-M-Y') }}
+                </span>
+            </li>
+            <li class="main_sortie_info_item">
+                <div>
+                    Nombres de places :
+                </div>
+                <span>
+{#  todo: change to max - inscrit     #}
+                    {{ sortie.nbInscriptionsMax }}
+                </span>
+            </li>
+            <li class="main_sortie_info_item">
+                <div>
+                    Durée :
+                </div>
+                <span>
+                    {{ sortie.duree | format_duration_number }}
+                </span>
+            </li>
+            <li class="main_sortie_info_item">
+                <div>
+                    Description et infos :
+                </div>
+                <span>
+                    {{ sortie.infosSortie }}
+                </span>
+            </li>
+        </ul>
+        <ul>
+            <li class="main_sortie_info_item">
+                <div>
+                    Campus :
+                </div>
+                <span>{{ sortie.siteOrganisateur }}</span>
+            </li>
+            <li class="main_sortie_info_item">
+                <div>
+                    Lieu :
+                </div>
+                <span>
+                    {{ sortie.lieu.ville.nom }}
+                </span>
+            </li>
+            <li class="main_sortie_info_item">
+                <div>
+                    Rue :
+                </div>
+                <span>
+                    {{ sortie.lieu.rue }}
+                </span></li>
+            <li class="main_sortie_info_item">
+                <div>
+                    Code Postal :
+                </div>
+                <span>{{ sortie.lieu.ville.codePostal }}</span></li>
+            <li class="main_sortie_info_item">
+                <div>
+                    Latitude :
+                </div>
+                <span>
+                    {{ sortie.lieu.latitude }}
+                </span>
+            </li>
+            <li class="main_sortie_info_item">
+                <div>
+                    Longitude :
+                </div>
+                <span>
+                    {{ sortie.lieu.latitude }}
+                </span>
+            </li>
+        </ul>
+    </div>
+
+    {# todo add gestionTemplate for sortie.participants  #}
+</div>
+
+
+

@@ -35,16 +35,26 @@ class Etat
         $this->sorties = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getLibelle(): ?string
     {
         return $this->libelle;
     }
 
+    /**
+     * @param string $libelle
+     * @return $this
+     */
     public function setLibelle(string $libelle): self
     {
         $this->libelle = $libelle;
@@ -60,6 +70,10 @@ class Etat
         return $this->sorties;
     }
 
+    /**
+     * @param Sortie $sorty
+     * @return $this
+     */
     public function addSorty(Sortie $sorty): self
     {
         if (!$this->sorties->contains($sorty)) {
@@ -70,6 +84,10 @@ class Etat
         return $this;
     }
 
+    /**
+     * @param Sortie $sorty
+     * @return $this
+     */
     public function removeSorty(Sortie $sorty): self
     {
         if ($this->sorties->removeElement($sorty)) {
@@ -81,4 +99,5 @@ class Etat
 
         return $this;
     }
+
 }

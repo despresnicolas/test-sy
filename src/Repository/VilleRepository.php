@@ -21,7 +21,15 @@ class VilleRepository extends ServiceEntityRepository
         parent::__construct($registry, Ville::class);
     }
 
-    public function add(Ville $entity, bool $flush = false): void
+    /**
+     * @param Ville $entity
+     * @param bool $flush
+     * @return void
+     */
+    public function add(
+        Ville $entity,
+        bool  $flush = false
+    ): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +38,15 @@ class VilleRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Ville $entity, bool $flush = false): void
+    /**
+     * @param Ville $entity
+     * @param bool $flush
+     * @return void
+     */
+    public function remove(
+        Ville $entity,
+        bool  $flush = false
+    ): void
     {
         $this->getEntityManager()->remove($entity);
 

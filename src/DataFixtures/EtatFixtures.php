@@ -8,8 +8,15 @@ use Doctrine\Persistence\ObjectManager;
 
 class EtatFixtures extends Fixture
 {
-    private $listEtat = ['Créée', 'Ouverte', 'Clôturée', 'Activité en cours', 'Passée', 'Annulée'];
+    /**
+     * @var string[]
+     */
+    private array $listEtat = ['Créée', 'Ouverte', 'Clôturée', 'Activité en cours', 'Passée', 'Annulée'];
 
+    /**
+     * @param ObjectManager $manager
+     * @return void
+     */
     public function load(ObjectManager $manager): void
     {
         foreach ($this->listEtat as $libelle) {

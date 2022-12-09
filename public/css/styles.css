@@ -56,7 +56,7 @@ body {
     align-content: end;
     gap: 1rem;
     list-style: none;
-    //min-width: 390px;
+//min-width: 390px;
     height: 100%;
 }
 
@@ -236,3 +236,4 @@ td:last-child {
     display: flex;
     gap: 3rem;
 }
+

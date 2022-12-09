@@ -21,7 +21,15 @@ class LieuRepository extends ServiceEntityRepository
         parent::__construct($registry, Lieu::class);
     }
 
-    public function add(Lieu $entity, bool $flush = false): void
+    /**
+     * @param Lieu $entity
+     * @param bool $flush
+     * @return void
+     */
+    public function add(
+        Lieu $entity,
+        bool $flush = false
+    ): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +38,15 @@ class LieuRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Lieu $entity, bool $flush = false): void
+    /**
+     * @param Lieu $entity
+     * @param bool $flush
+     * @return void
+     */
+    public function remove(
+        Lieu $entity,
+        bool $flush = false
+    ): void
     {
         $this->getEntityManager()->remove($entity);
 

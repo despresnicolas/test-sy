@@ -13,7 +13,7 @@
     </thead>
     <tbody>
     {% for sortie in sorties %}
-        <tr data-href="{{ path('sortie_home', {id: sortie.id}) }}">
+        <tr data-href="{{ path('sortie_details', {id: sortie.id}) }}">
             <td>
                 {{ sortie.nom }}
             </td>

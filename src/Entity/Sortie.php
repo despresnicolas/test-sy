@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\SortieRepository;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -94,16 +95,26 @@ class Sortie
         $this->participants = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getNom(): ?string
     {
         return $this->nom;
     }
 
+    /**
+     * @param string $nom
+     * @return $this
+     */
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
@@ -111,23 +122,37 @@ class Sortie
         return $this;
     }
 
-    public function getDateHeureDebut(): ?\DateTimeInterface
+    /**
+     * @return DateTimeInterface|null
+     */
+    public function getDateHeureDebut(): ?DateTimeInterface
     {
         return $this->dateHeureDebut;
     }
 
-    public function setDateHeureDebut(\DateTimeInterface $dateHeureDebut): self
+    /**
+     * @param DateTimeInterface $dateHeureDebut
+     * @return $this
+     */
+    public function setDateHeureDebut(DateTimeInterface $dateHeureDebut): self
     {
         $this->dateHeureDebut = $dateHeureDebut;
 
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getDuree(): ?int
     {
         return $this->duree;
     }
 
+    /**
+     * @param int $duree
+     * @return $this
+     */
     public function setDuree(int $duree): self
     {
         $this->duree = $duree;
@@ -135,23 +160,37 @@ class Sortie
         return $this;
     }
 
-    public function getDateLimiteInscription(): ?\DateTimeInterface
+    /**
+     * @return DateTimeInterface|null
+     */
+    public function getDateLimiteInscription(): ?DateTimeInterface
     {
         return $this->dateLimiteInscription;
     }
 
-    public function setDateLimiteInscription(\DateTimeInterface $dateLimiteInscription): self
+    /**
+     * @param DateTimeInterface $dateLimiteInscription
+     * @return $this
+     */
+    public function setDateLimiteInscription(DateTimeInterface $dateLimiteInscription): self
     {
         $this->dateLimiteInscription = $dateLimiteInscription;
 
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getNbInscriptionsMax(): ?int
     {
         return $this->nbInscriptionsMax;
     }
 
+    /**
+     * @param int $nbInscriptionsMax
+     * @return $this
+     */
     public function setNbInscriptionsMax(int $nbInscriptionsMax): self
     {
         $this->nbInscriptionsMax = $nbInscriptionsMax;
@@ -159,11 +198,18 @@ class Sortie
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getInfosSortie(): ?string
     {
         return $this->infosSortie;
     }
 
+    /**
+     * @param string|null $infosSortie
+     * @return $this
+     */
     public function setInfosSortie(?string $infosSortie): self
     {
         $this->infosSortie = $infosSortie;
@@ -171,11 +217,18 @@ class Sortie
         return $this;
     }
 
+    /**
+     * @return Etat|null
+     */
     public function getEtat(): ?Etat
     {
         return $this->etat;
     }
 
+    /**
+     * @param Etat|null $etat
+     * @return $this
+     */
     public function setEtat(?Etat $etat): self
     {
         $this->etat = $etat;
@@ -183,11 +236,18 @@ class Sortie
         return $this;
     }
 
+    /**
+     * @return Lieu|null
+     */
     public function getLieu(): ?Lieu
     {
         return $this->lieu;
     }
 
+    /**
+     * @param Lieu|null $lieu
+     * @return $this
+     */
     public function setLieu(?Lieu $lieu): self
     {
         $this->lieu = $lieu;
@@ -195,11 +255,18 @@ class Sortie
         return $this;
     }
 
+    /**
+     * @return Campus|null
+     */
     public function getSiteOrganisateur(): ?Campus
     {
         return $this->siteOrganisateur;
     }
 
+    /**
+     * @param Campus|null $siteOrganisateur
+     * @return $this
+     */
     public function setSiteOrganisateur(?Campus $siteOrganisateur): self
     {
         $this->siteOrganisateur = $siteOrganisateur;
@@ -207,11 +274,18 @@ class Sortie
         return $this;
     }
 
+    /**
+     * @return Participant|null
+     */
     public function getOrganisateur(): ?Participant
     {
         return $this->organisateur;
     }
 
+    /**
+     * @param Participant|null $organisateur
+     * @return $this
+     */
     public function setOrganisateur(?Participant $organisateur): self
     {
         $this->organisateur = $organisateur;
@@ -227,6 +301,10 @@ class Sortie
         return $this->participants;
     }
 
+    /**
+     * @param Participant $participant
+     * @return $this
+     */
     public function addParticipant(Participant $participant): self
     {
         if (!$this->participants->contains($participant)) {
@@ -237,6 +315,10 @@ class Sortie
         return $this;
     }
 
+    /**
+     * @param Participant $participant
+     * @return $this
+     */
     public function removeParticipant(Participant $participant): self
     {
         if ($this->participants->removeElement($participant)) {
@@ -245,4 +327,5 @@ class Sortie
 
         return $this;
     }
+
 }

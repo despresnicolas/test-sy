@@ -46,16 +46,26 @@ class Campus
         $this->sorties = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getNom(): ?string
     {
         return $this->nom;
     }
 
+    /**
+     * @param string $nom
+     * @return $this
+     */
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
@@ -71,6 +81,10 @@ class Campus
         return $this->participants;
     }
 
+    /**
+     * @param Participant $participant
+     * @return $this
+     */
     public function addParticipant(Participant $participant): self
     {
         if (!$this->participants->contains($participant)) {
@@ -81,6 +95,10 @@ class Campus
         return $this;
     }
 
+    /**
+     * @param Participant $participant
+     * @return $this
+     */
     public function removeParticipant(Participant $participant): self
     {
         if ($this->participants->removeElement($participant)) {
@@ -101,6 +119,10 @@ class Campus
         return $this->sorties;
     }
 
+    /**
+     * @param Sortie $sorty
+     * @return $this
+     */
     public function addSorty(Sortie $sorty): self
     {
         if (!$this->sorties->contains($sorty)) {
@@ -111,6 +133,10 @@ class Campus
         return $this;
     }
 
+    /**
+     * @param Sortie $sorty
+     * @return $this
+     */
     public function removeSorty(Sortie $sorty): self
     {
         if ($this->sorties->removeElement($sorty)) {
@@ -123,8 +149,11 @@ class Campus
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function __toString()
-{
-    return $this->getNom();
-}
+    {
+        return $this->getNom();
+    }
 }

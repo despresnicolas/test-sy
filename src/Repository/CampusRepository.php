@@ -21,7 +21,15 @@ class CampusRepository extends ServiceEntityRepository
         parent::__construct($registry, Campus::class);
     }
 
-    public function add(Campus $entity, bool $flush = false): void
+    /**
+     * @param Campus $entity
+     * @param bool $flush
+     * @return void
+     */
+    public function add(
+        Campus $entity,
+        bool   $flush = false
+    ): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +38,15 @@ class CampusRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Campus $entity, bool $flush = false): void
+    /**
+     * @param Campus $entity
+     * @param bool $flush
+     * @return void
+     */
+    public function remove(
+        Campus $entity,
+        bool   $flush = false
+    ): void
     {
         $this->getEntityManager()->remove($entity);
 

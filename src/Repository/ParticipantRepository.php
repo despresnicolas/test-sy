@@ -8,6 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
+use function get_class;
 
 /**
  * @extends ServiceEntityRepository<Participant>
@@ -24,7 +25,15 @@ class ParticipantRepository extends ServiceEntityRepository implements PasswordU
         parent::__construct($registry, Participant::class);
     }
 
-    public function add(Participant $entity, bool $flush = false): void
+    /**
+     * @param Participant $entity
+     * @param bool $flush
+     * @return void
+     */
+    public function add(
+        Participant $entity,
+        bool        $flush = false
+    ): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -33,7 +42,15 @@ class ParticipantRepository extends ServiceEntityRepository implements PasswordU
         }
     }
 
-    public function remove(Participant $entity, bool $flush = false): void
+    /**
+     * @param Participant $entity
+     * @param bool $flush
+     * @return void
+     */
+    public function remove(
+        Participant $entity,
+        bool        $flush = false
+    ): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -45,10 +62,13 @@ class ParticipantRepository extends ServiceEntityRepository implements PasswordU
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      */
-    public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
+    public function upgradePassword(
+        PasswordAuthenticatedUserInterface $user,
+        string                             $newHashedPassword
+    ): void
     {
         if (!$user instanceof Participant) {
-            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
+            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
         }
 
         $user->setPassword($newHashedPassword);

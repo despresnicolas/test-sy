@@ -21,7 +21,15 @@ class EtatRepository extends ServiceEntityRepository
         parent::__construct($registry, Etat::class);
     }
 
-    public function add(Etat $entity, bool $flush = false): void
+    /**
+     * @param Etat $entity
+     * @param bool $flush
+     * @return void
+     */
+    public function add(
+        Etat $entity,
+        bool $flush = false
+    ): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +38,15 @@ class EtatRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Etat $entity, bool $flush = false): void
+    /**
+     * @param Etat $entity
+     * @param bool $flush
+     * @return void
+     */
+    public function remove(
+        Etat $entity,
+        bool $flush = false
+    ): void
     {
         $this->getEntityManager()->remove($entity);
 

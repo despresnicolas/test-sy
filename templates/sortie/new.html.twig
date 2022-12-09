@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <style>
+        .create_sortie {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .form_particpart_btn {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cible {
+            position: relative;
+        }
+
+        .btn-circle {
+            position: absolute;
+            top: 1.9rem;
+            left: 7rem;
+            background-color: gray;
+            color: black;
+            border: 2px solid black;
+            font-size: 1.5rem;
+            font-weight: bolder;
+            text-align: center;
+            border-radius: 50%;
+            width: 24px;
+        }
+    </style>
+    <div>
+        <h2 class="page_title">Créer une sortie</h2>
+        <div class="create_sortie">
+            <div>
+                {{ form_start(createSortieForm) }}
+                {{ form_errors(createSortieForm) }}
+                {{ form_row(createSortieForm.nom) }}
+                {{ form_row(createSortieForm.dateHeureDebut) }}
+                {{ form_row(createSortieForm.dateLimiteInscription) }}
+                {{ form_row(createSortieForm.nbInscriptionsMax) }}
+                {{ form_row(createSortieForm.duree) }}
+                {{ form_row(createSortieForm.infosSortie) }}
+            </div>
+            <div class="cible">
+                <div>Campus {{ app.user.campus }}</div>
+                {{ form_row(createSortieForm.ville) }}
+                {{ form_row(createSortieForm.lieu) }}
+
+                <div>{{ sortie.lieu.rue }}</div>
+
+
+{#  todo: add new lieu              #}
+                <div class="btn-circle">
+                    +
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class=" form_particpart_btn">
+            <button class="btn-class">Enregistrer</button>
+            <button class="btn-class">Publier la sortie</button>
+            <button class="btn-class">Annuler</button>
+        </div>
+    </div>
+    {{ form_end(createSortieForm) }}
+{% endblock %}
+{% block title %}{% endblock %}
+

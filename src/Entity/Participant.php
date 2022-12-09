@@ -110,16 +110,26 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         $this->inscriptions = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getMail(): ?string
     {
         return $this->mail;
     }
 
+    /**
+     * @param string $mail
+     * @return $this
+     */
     public function setMail(string $mail): self
     {
         $this->mail = $mail;
@@ -134,7 +144,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->mail;
+        return (string)$this->mail;
     }
 
     /**
@@ -142,7 +152,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->mail;
+        return (string)$this->mail;
     }
 
     /**
@@ -172,6 +182,10 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
+    /**
+     * @param string $password
+     * @return $this
+     */
     public function setPassword(string $password): self
     {
         $this->password = $password;
@@ -199,11 +213,18 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
+    /**
+     * @return string|null
+     */
     public function getNom(): ?string
     {
         return $this->nom;
     }
 
+    /**
+     * @param string $nom
+     * @return $this
+     */
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
@@ -211,11 +232,18 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getPrenom(): ?string
     {
         return $this->prenom;
     }
 
+    /**
+     * @param string $prenom
+     * @return $this
+     */
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
@@ -223,11 +251,18 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
+    /**
+     * @param string|null $telephone
+     * @return $this
+     */
     public function setTelephone(?string $telephone): self
     {
         $this->telephone = $telephone;
@@ -235,11 +270,18 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function isAdministrateur(): ?bool
     {
         return $this->administrateur;
     }
 
+    /**
+     * @param bool $administrateur
+     * @return $this
+     */
     public function setAdministrateur(bool $administrateur): self
     {
         $this->administrateur = $administrateur;
@@ -247,11 +289,18 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function isActif(): ?bool
     {
         return $this->actif;
     }
 
+    /**
+     * @param bool $actif
+     * @return $this
+     */
     public function setActif(bool $actif): self
     {
         $this->actif = $actif;
@@ -259,11 +308,18 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getPseudo(): ?string
     {
         return $this->pseudo;
     }
 
+    /**
+     * @param string $pseudo
+     * @return $this
+     */
     public function setPseudo(string $pseudo): self
     {
         $this->pseudo = $pseudo;
@@ -271,11 +327,18 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @return Campus|null
+     */
     public function getCampus(): ?Campus
     {
         return $this->campus;
     }
 
+    /**
+     * @param Campus|null $campus
+     * @return $this
+     */
     public function setCampus(?Campus $campus): self
     {
         $this->campus = $campus;
@@ -291,6 +354,10 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->sorties;
     }
 
+    /**
+     * @param Sortie $sorty
+     * @return $this
+     */
     public function addSorty(Sortie $sorty): self
     {
         if (!$this->sorties->contains($sorty)) {
@@ -301,6 +368,10 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @param Sortie $sorty
+     * @return $this
+     */
     public function removeSorty(Sortie $sorty): self
     {
         if ($this->sorties->removeElement($sorty)) {
@@ -321,6 +392,10 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->inscriptions;
     }
 
+    /**
+     * @param Sortie $inscriptions
+     * @return $this
+     */
     public function addInscriptions(Sortie $inscriptions): self
     {
         if (!$this->inscriptions->contains($inscriptions)) {
@@ -330,10 +405,22 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @param Sortie $inscriptions
+     * @return $this
+     */
     public function removeInscriptions(Sortie $inscriptions): self
     {
         $this->inscriptions->removeElement($inscriptions);
 
         return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function __toString()
+    {
+        return $this->getNom();
     }
 }
